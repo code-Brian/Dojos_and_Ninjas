@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <title>Dojo Ninjas | Pt. I</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">{{ dojo.name }} Ninjas</h1>
+        <div class="container d-flex p-5">
+            <div class="container">
+                <table class="table table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Age</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ninja in ninjas %}
+                        <tr>
+                            <td>{{ ninja.first_name }}</td>
+                            <td>{{ ninja.last_name }}</td>
+                            <td>{{ ninja.age }}</td>
+                            <td>
+                                <a class="me-2" href="/ninja/edit{{ninja.id}}">Edit</a>
+                                <a class="me-2" href="/ninja/delete{{ninja.id}}">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <p><a href="/dojos">Home</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

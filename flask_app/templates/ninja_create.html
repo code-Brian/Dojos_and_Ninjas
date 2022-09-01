@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <title>Dojos | Pt. I | New Ninja</title>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+            <div class="container-s p-3">
+                <h1 class="text-center mb-3">New Ninja</h1>
+                <form action="/ninja/create" method="post">
+                    <div class="form floating mb-3">
+                        <!-- Do I need a label with select? -->
+                        <!-- <label class="form-label" for="dojo">Dojo</label> -->
+                        <select class="form-select" id="dojo" name="dojo">
+                            <option selected value="Choose a Dojo">Choose a Dojo</option>
+                            {% for dojo in dojos %}
+                            <option value="{{dojo.id}}" name="{{dojo.id}}">{{ dojo.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="text" id="fname" name="fname">
+                        <label class="" for="fname">First Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="text" id="lname" name="lname">
+                        <label class="" for="lname">Last Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="number" min="18" id="age" name="age">
+                        <label class="form-label" for="age">Age</label>
+                    </div>
+                    <input class="btn btn-primary mt-3" type="submit" value="Create">
+                </form>
+                <p class="mt-3"><a href="/dojos">Home</a></p>
+        </div>
+    </div>
+</body>
+</html>
