@@ -9,17 +9,23 @@
 </head>
 <body>
     <div class="container ">
-        <h1>Welcome to Dojos and Ninjas!</h1>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dictum metus vitae ex ultrices placerat. Mauris dolor lorem, 
-            dapibus vitae aliquam in, scelerisque ut mi. Nullam faucibus quam nec vulputate egestas. Vestibulum lacinia sit amet purus 
-            vitae aliquam. Morbi at gravida neque. Proin fringilla ornare ligula vitae blandit. Phasellus cursus dictum magna, eget 
-            bibendum sapien. In hac habitasse platea dictumst. Nam at purus sit amet enim convallis dictum ac in ligula.
-            Praesent quis quam nec mauris rutrum semper et id sapien. Orci varius natoque penatibus et magnis dis parturient montes, 
-            nascetur ridiculus mus. Sed lacinia iaculis nisi ut maximus. Nunc eu vehicula nisl, vel sagittis augue. Suspendisse sagittis 
-            a elit sed dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et arcu neque. In porta, nunc ac posuere 
-            consequat, nulla dolor volutpat neque, eget dictum tellus lectus eu magna. Etiam scelerisque id elit a pellentesque. In in 
-            diam ac nibh molestie finibus. 
-        </p>
+        <h1>All Dojos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dojos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dojo in dojos %}
+                    <tr>
+                        <td>
+                            {{ dojo.name }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
