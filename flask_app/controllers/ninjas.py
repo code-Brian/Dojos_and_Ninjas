@@ -18,10 +18,11 @@ def create_ninja():
         'age' : request.form.get('age'),
         'id': request.form.get('dojo')
     }
-    print(data['id'])
+    id = data['id']
+
     Ninja.add_ninja(data)
-    print(data)
-    return redirect("/dojos")
+
+    return redirect(f"/dojos/{id}")
 
 @app.route('/ninja/edit<int:id>')
 def edit_ninja(id):
@@ -39,6 +40,14 @@ def update_ninja():
         'lname' : request.form.get('lname'),
         'age' : request.form.get('age'),
         'id' : request.form.get('id'),
-        'dojo_id' : request.form.get('dojo.id')
+        'dojo_id' : request.form.get('dojo')
     }
+    print(f"dojo_id is {data['dojo_id']}")
+    print(f"data['id'] was {data['id']}")
+    Ninja.edit_ninja(data)
+
     return redirect('/dojos')
+
+@app.route('/ninja/destroy')
+def destroy_ninja():
+    print('destroying ninja from db...')

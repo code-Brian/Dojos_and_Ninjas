@@ -55,7 +55,8 @@ class Ninja():
         INSERT INTO ninjas (first_name, last_name, age, dojo_id, created_at, updated_at)
         VALUES (%(fname)s, %(lname)s, %(age)s, %(id)s, NOW(), NOW() );'''
 
-        return connectToMySQL('dojos_and_ninjas').query_db(query, data) 
+        return connectToMySQL('dojos_and_ninjas').query_db(query, data)
+
     @classmethod
     def edit_ninja(cls, data):
         query = '''
@@ -63,8 +64,14 @@ class Ninja():
         first_name=%(fname)s, 
         last_name=%(lname)s, 
         age=%(age)s, 
-        updated_at=NOW()
+        updated_at=NOW(),
         dojo_id=%(dojo_id)s
-        WHERE id = %(id)s
+        WHERE id = %(id)s;
         '''
         return connectToMySQL('dojos_and_ninjas').query_db(query, data)
+
+'''
+SELECT * FROM ninjas 
+JOIN dojos ON ninjas.id
+WHERE dojos.id = 4;
+'''

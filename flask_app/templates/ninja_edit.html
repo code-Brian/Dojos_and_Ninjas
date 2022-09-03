@@ -10,16 +10,16 @@
 <body>
     <div class="container d-flex justify-content-center align-items-center mt-5">
             <div class="container-s p-3">
-                <h1 class="text-center mb-3">Edit {{ ninja.first_name }}</h1>
+                <h1 class="text-center mb-3">Edit {{ ninja.first_name }}, id: {{ ninja.id }}</h1>
                 <form action="/ninja/update" method="post">
                     <div class="form floating mb-3">
                         <!-- Do I need a label with select? -->
                         <!-- <label class="form-label" for="dojo">Dojo</label> -->
-                        <input type="hidden" name="id" value="{{ninja.id}}">
+                        <input type="hidden" name="id" value="{{ ninja.id }}">
                         <select class="form-select" id="dojo" name="dojo">
-                            <option selected value="{{dojo_id}}">Select a Dojo</option>
+                            <option selected value="Poop">Poop</option>
                             {% for dojo in dojos %}
-                            <option value="{{dojo.id}}" name="{{dojo.id}}">{{ dojo.name }}</option>
+                            <option value="{{ dojo.id }}" name="{{ dojo.id }}" >{{ dojo.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
