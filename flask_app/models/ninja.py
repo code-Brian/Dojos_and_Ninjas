@@ -68,6 +68,14 @@ class Ninja():
         dojo_id=%(dojo_id)s
         WHERE id = %(id)s;
         '''
+
+        return connectToMySQL('dojos_and_ninjas').query_db(query, data)
+
+    @classmethod
+    def delete_one(cls, data):
+        query = '''
+        DELETE FROM ninjas WHERE id = %(id)s;'''
+
         return connectToMySQL('dojos_and_ninjas').query_db(query, data)
 
 '''

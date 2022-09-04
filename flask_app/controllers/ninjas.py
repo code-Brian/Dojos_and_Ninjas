@@ -30,7 +30,8 @@ def edit_ninja(id):
         'id' : id
     }
     print('navigating to edit ninja page')
-    return render_template('ninja_edit.html', ninja = Ninja.get_one(data), dojos = Dojo.get_all())
+
+    return render_template('ninja_edit.html', ninja = Ninja.get_one(data), ninja_dojo = Dojo.ninja_in_dojo(data), dojos = Dojo.get_all() )
 
 @app.route('/ninja/update', methods = ['POST'])
 def update_ninja():
@@ -51,3 +52,14 @@ def update_ninja():
 @app.route('/ninja/destroy')
 def destroy_ninja():
     print('destroying ninja from db...')
+
+@app.route('/ninja/delete/<int:id>')
+def delete_ninja(id):
+    # database query here
+    data = {
+        'id' : id   
+    }
+
+    Ninja.delete_one(data)
+
+    return redirect('/dojos')

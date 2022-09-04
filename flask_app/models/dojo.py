@@ -31,7 +31,6 @@ class Dojo:
         '''
         result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
         return cls(result[0])
-        
 
     @classmethod
     def save(cls, data):
@@ -40,5 +39,13 @@ class Dojo:
         VALUES (%(dojo_name)s, NOW(), NOW() );
         """
         return connectToMySQL('dojos_and_ninjas').query_db(query, data)
-    
 
+    @classmethod
+    def ninja_in_dojo(cls, data):
+        query = '''
+        SELECT * FROM dojos
+        JOIN ninjas ON dojos.id=ninjas.dojo_id
+        WHERE ninjas.id = %(id)s;
+        '''
+        result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
+        return cls(result[0])
