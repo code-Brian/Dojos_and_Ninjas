@@ -46,6 +46,27 @@ class Dojo:
         SELECT * FROM dojos
         JOIN ninjas ON dojos.id=ninjas.dojo_id
         WHERE ninjas.id = %(id)s;
-        '''
+        ''' 
         result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
         return cls(result[0])
+    
+
+    @classmethod
+    def delete_ninjas_in_dojo(cls, data):
+        query = '''
+        DELETE FROM ninjas
+        WHERE dojo_id = %(id)s
+        '''
+
+        return connectToMySQL('dojos_and_ninjas').query_db(query, data)
+
+    @classmethod
+    def delete_dojo(cls, data):
+        cls.delete_ninjas_in_dojo(data)
+
+        query = '''
+        DELETE FROM dojos
+        WHERE id = %(id)s;
+        '''
+
+        return connectToMySQL('dojos_and_ninjas').query_db(query, data)

@@ -32,7 +32,7 @@ class Ninja():
     @classmethod
     def show_dojo(cls, data):
         query = '''
-        SELECT dojo.name FROM dojos
+        SELECT dojo.name, dojo.id FROM dojos
         WHERE ninja.id = %(id)s
         '''
         result = connectToMySQL('dojos_and_ninjas').query_db(query, data)

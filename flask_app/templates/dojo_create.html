@@ -35,11 +35,14 @@
                             <td>
                                 <a href="/dojos/{{dojo.id}}" >{{ dojo.name }}</a>
                             </td>
+                            <td class="d-flex justify-content-end align-items-center">
+                                <a class="btn btn-danger" href="/dojos/{{dojo.id}}/delete">Delete Dojo</a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
-                <p><a href="/ninjas">Add Ninja</a></p>
+                <p><a class="btn btn-primary" href="/ninjas">Add Ninja</a></p>
             </div>
 
         </div>

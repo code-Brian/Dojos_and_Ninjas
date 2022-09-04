@@ -27,3 +27,13 @@ def dojo_ninjas(id):
     }
     print('showing all the ninjas in the dojo')
     return render_template('dojo_ninjas.html', dojo = Dojo.get_one(data), ninjas = Ninja.get_dojo_ninjas(data))
+
+@app.route('/dojos/<int:id>/delete')
+def dojo_delete(id):
+    data = {
+        'id' : id
+    }
+
+    Dojo.delete_dojo(data)
+
+    return redirect('/dojos')
